@@ -4,7 +4,7 @@ import imutils
 import pickle
 
 def Recognition():
-	face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_alt2.xml")
+	face_cascade = cv2.CascadeClassifier("data/haarcascade_frontalface_alt2.xml")
 	recognizer = cv2.face.LBPHFaceRecognizer_create()
 	recognizer.read("faces_trained.yml")
 
@@ -40,3 +40,5 @@ def Recognition():
 
 	cap.release()
 	cv2.destroyAllWindows()
+
+Recognition()

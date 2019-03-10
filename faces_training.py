@@ -7,7 +7,7 @@ import pickle
 def training():
 	BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-	face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_alt2.xml")
+	face_cascade = cv2.CascadeClassifier("data/haarcascade_frontalface_alt2.xml")
 
 	image_dir = os.path.join(BASE_DIR, "faces")
 
@@ -34,6 +34,7 @@ def training():
 				size = (550, 550)
 				final_image = pillow_image.resize(size, Image.ANTIALIAS)
 				image_array = np.array(final_image, "uint8")
+				print(image_array)
 				faces = face_cascade.detectMultiScale(image_array, scaleFactor=1.5, minNeighbors=5)
 
 				for (x,y,w,h) in faces:
@@ -51,3 +52,5 @@ def training():
 
 	recognizer.train(x_train, np.array(y_labels))
 	recognizer.save("faces_trained.yml")
+
+training()
